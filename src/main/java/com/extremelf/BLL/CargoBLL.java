@@ -1,7 +1,6 @@
 package com.extremelf.BLL;
 
-import com.extremelf.DAL.ControlodequalidadeEntity;
-import com.extremelf.DAL.EncomendacEntity;
+import com.extremelf.DAL.CargoEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,107 +9,84 @@ import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EncomendaCBLL {
-
+public class CargoBLL {
     private static final String PERSISTENCE_UNIT_NAME = "default";
     private static EntityManagerFactory factory = null;
     private static EntityManager em = null;
 
-    public static void create(EncomendacEntity encomendacEntity) {
+    public static void create(CargoEntity cargo) {
         if (factory == null) {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         }
-
         if (em == null) em = factory.createEntityManager();
 
         em.getTransaction().begin();
-        em.persist(encomendacEntity);
+        em.persist(cargo);
         em.getTransaction().commit();
     }
 
-    public static EncomendacEntity readByIdCliente(int idCliente) {
-        EncomendacEntity encomendac;
+    public static List<CargoEntity> readAll() {
+        List<CargoEntity> listaCargos = new ArrayList<>();
+
         if (factory == null) {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         }
 
         if (em == null) em = factory.createEntityManager();
 
-        Query q1 = em.createNamedQuery("Encomenda.findByIdCliente");
-        q1.setParameter("idCliente", idCliente);
-
-        Object obj = q1.getSingleResult();
-
-        if (obj != null) {
-            encomendac = (EncomendacEntity) obj;
-        } else {
-            return null;
-        }
-
-        return encomendac;
-    }
-
-    public static EncomendacEntity readByIdEncomendaC(int idEncomendaC) {
-        EncomendacEntity encomendac;
-        if (factory == null) {
-            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        }
-
-        if (em == null) em = factory.createEntityManager();
-
-        Query q1 = em.createNamedQuery("Encomenda.findByIdEncomendaC");
-        q1.setParameter("idEncomendaC", idEncomendaC);
-
-        Object obj = q1.getSingleResult();
-
-        if (obj != null) {
-            encomendac = (EncomendacEntity) obj;
-        } else {
-            return null;
-        }
-
-        return encomendac;
-    }
-
-    public static List<EncomendacEntity> readAll() {
-        List<EncomendacEntity> encomendaC = new ArrayList<>();
-        if (factory == null) {
-            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        }
-
-        if (em == null) em = factory.createEntityManager();
-
-        Query q1 = em.createNamedQuery("EncomendaC.findAll");
+        Query q1 = em.createNamedQuery("Cargo.findAll");
         List<Object> result = q1.getResultList();
 
         for (Object resultado : result) {
-            encomendaC.add((EncomendacEntity) resultado);
+            listaCargos.add((CargoEntity) resultado);
         }
 
-        return encomendaC;
+        return listaCargos;
     }
 
-    public static void update(EncomendacEntity encomendac) {
+    public static CargoEntity readById(int idCargo) {
+        CargoEntity cargo;
+
         if (factory == null) {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         }
 
         if (em == null) em = factory.createEntityManager();
 
+        Query q1 = em.createNamedQuery("Cargo.findByIdCargo");
+        q1.setParameter("idCargo", idCargo);
 
-        em.getTransaction().begin();
-        em.merge(encomendac);
-        em.getTransaction().commit();
+        Object obj = q1.getSingleResult();
+
+        if (obj != null) {
+            cargo = ((CargoEntity) obj);
+        } else {
+            return null;
+        }
+
+        return cargo;
     }
 
-    public static void delete(EncomendacEntity encomendac) {
+    public static void update(CargoEntity cargo) {
         if (factory == null) {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         }
-
         if (em == null) em = factory.createEntityManager();
+
         em.getTransaction().begin();
-        em.remove(encomendac);
+        em.merge(cargo);
         em.getTransaction().commit();
     }
+
+    public static void delete(CargoEntity cargo) {
+        if (factory == null) {
+            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        }
+        if (em == null) em = factory.createEntityManager();
+
+        em.getTransaction().begin();
+        em.remove(cargo);
+        em.getTransaction().commit();
+    }
+
 }

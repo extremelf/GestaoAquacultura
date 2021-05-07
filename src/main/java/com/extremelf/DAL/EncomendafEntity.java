@@ -11,7 +11,7 @@ import java.util.Objects;
 @Table(name = "ENCOMENDAF", schema = "PROJETO", catalog = "")
 @NamedQueries({
         @NamedQuery(name = "EncomendaF.findAll", query = "SELECT a FROM EncomendafEntity a"),
-        @NamedQuery(name = "EncomendaF.findByIDEncomendaF", query = "SELECT a FROM EncomendafEntity a WHERE a.idencomendaf = :idEncomendaF")
+        @NamedQuery(name = "EncomendaF.findByIdEncomendaF", query = "SELECT a FROM EncomendafEntity a WHERE a.idencomendaf = :idEncomendaF")
 
 })
 public class EncomendafEntity {

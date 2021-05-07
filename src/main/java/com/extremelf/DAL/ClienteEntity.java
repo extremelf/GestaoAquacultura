@@ -9,7 +9,8 @@ import java.util.Objects;
 @NamedQueries({
         @NamedQuery(name = "Cliente.findAll", query = "SELECT a FROM ClienteEntity a"),
         @NamedQuery(name = "Cliente.findById", query = "SELECT a FROM ClienteEntity a WHERE a.idcliente = :idCliente"),
-        @NamedQuery(name = "Cliente.findByCC", query = "SELECT a FROM ClienteEntity a WHERE a.cc = :cc")
+        @NamedQuery(name = "Cliente.findByCC", query = "SELECT a FROM ClienteEntity a WHERE a.cc = :cc"),
+        @NamedQuery(name = "Cliente.findByNome", query = "SELECT a FROM ClienteEntity a WHERE a.nome = :nome")
 })
 public class ClienteEntity {
     private long idcliente;
