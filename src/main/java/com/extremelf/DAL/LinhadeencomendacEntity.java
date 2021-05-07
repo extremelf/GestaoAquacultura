@@ -1,0 +1,90 @@
+package com.extremelf.DAL;
+
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
+@Table(name = "LINHADEENCOMENDAC", schema = "PROJETO", catalog = "")
+@IdClass(LinhadeencomendacEntityPK.class)
+public class LinhadeencomendacEntity {
+    private long idencomendac;
+    private long idlote;
+    private Long precounitario;
+    private String descricao;
+    private EncomendacEntity encomendacByIdencomendac;
+    private LoteEntity loteByIdlote;
+
+    @Id
+
+    @Column(name = "IDENCOMENDAC", nullable = false, precision = 0)
+    public long getIdencomendac() {
+        return idencomendac;
+    }
+
+    public void setIdencomendac(long idencomendac) {
+        this.idencomendac = idencomendac;
+    }
+
+    @Id
+    @Column(name = "IDLOTE", nullable = false, precision = 0)
+    public long getIdlote() {
+        return idlote;
+    }
+
+    public void setIdlote(long idlote) {
+        this.idlote = idlote;
+    }
+
+    @Basic
+    @Column(name = "PRECOUNITARIO", nullable = true, precision = 0)
+    public Long getPrecounitario() {
+        return precounitario;
+    }
+
+    public void setPrecounitario(Long precounitario) {
+        this.precounitario = precounitario;
+    }
+
+    @Basic
+    @Column(name = "DESCRICAO", nullable = true, length = 200)
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LinhadeencomendacEntity that = (LinhadeencomendacEntity) o;
+        return idencomendac == that.idencomendac && idlote == that.idlote && Objects.equals(precounitario, that.precounitario) && Objects.equals(descricao, that.descricao);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idencomendac, idlote, precounitario, descricao);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "IDENCOMENDAC", referencedColumnName = "IDENCOMENDAC", nullable = false)
+    public EncomendacEntity getEncomendacByIdencomendac() {
+        return encomendacByIdencomendac;
+    }
+
+    public void setEncomendacByIdencomendac(EncomendacEntity encomendacByIdencomendac) {
+        this.encomendacByIdencomendac = encomendacByIdencomendac;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "IDLOTE", referencedColumnName = "IDLOTE", nullable = false)
+    public LoteEntity getLoteByIdlote() {
+        return loteByIdlote;
+    }
+
+    public void setLoteByIdlote(LoteEntity loteByIdlote) {
+        this.loteByIdlote = loteByIdlote;
+    }
+}
