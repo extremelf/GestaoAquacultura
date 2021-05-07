@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="default">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.extremelf.DAL.CodpostalEntity</class>
+        <class>com.extremelf.DAL.ControlodequalidadeEntity</class>
+        <class>com.extremelf.DAL.EncomendacEntity</class>
+        <class>com.extremelf.DAL.EncomendafEntity</class>
+        <class>com.extremelf.DAL.EspecieEntity</class>
+        <class>com.extremelf.DAL.FornecedorEntity</class>
+        <class>com.extremelf.DAL.FuncionarioEntity</class>
+        <class>com.extremelf.DAL.LinhadeencomendacEntity</class>
+        <class>com.extremelf.DAL.LinhaencomendafEntity</class>
+        <class>com.extremelf.DAL.LoteEntity</class>
+        <class>com.extremelf.DAL.RacaoEntity</class>
+        <class>com.extremelf.DAL.ReportaavariaEntity</class>
+        <class>com.extremelf.DAL.TanqueEntity</class>
+        <class>com.extremelf.DAL.TanqueespecieEntity</class>
+        <class>com.extremelf.DAL.TanqueloteEntity</class>
+        <class>com.extremelf.DAL.TipoDeAvariaEntity</class>
+        <class>com.extremelf.DAL.TipoDeControloEntity</class>
+        <class>com.extremelf.DAL.AguaEntity</class>
+        <class>com.extremelf.DAL.CargoEntity</class>
+        <class>com.extremelf.DAL.ClienteEntity</class>
+        <properties>
+            <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@192.168.1.83:1521:XE"/>
+            <property name="hibernate.connection.username" value="projeto"/>
+            <property name="hibernate.connection.password" value="123456"/>
+            <property name="hibernate.archive.autodetection" value="class"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+        </properties>
+    </persistence-unit>
+</persistence>
