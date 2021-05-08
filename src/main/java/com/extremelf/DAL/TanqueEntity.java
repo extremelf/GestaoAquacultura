@@ -81,7 +81,7 @@ public class TanqueEntity {
     }
 
     @Basic
-    @Column(name = "IDAGUA", nullable = true, precision = 0)
+    @Column(name = "IDAGUA",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdagua() {
         return idagua;
     }
@@ -91,7 +91,7 @@ public class TanqueEntity {
     }
 
     @Basic
-    @Column(name = "IDFUNCIONARIO", nullable = true, precision = 0)
+    @Column(name = "IDFUNCIONARIO",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdfuncionario() {
         return idfuncionario;
     }
@@ -119,7 +119,7 @@ public class TanqueEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDAGUA", referencedColumnName = "IDAGUA")
+    @JoinColumn(name = "IDAGUA", referencedColumnName = "IDAGUA",insertable = false,updatable = false)
     public AguaEntity getAguaByIdagua() {
         return aguaByIdagua;
     }
@@ -129,7 +129,7 @@ public class TanqueEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDFUNCIONARIO", referencedColumnName = "IDFUNCIONARIO")
+    @JoinColumn(name = "IDFUNCIONARIO", referencedColumnName = "IDFUNCIONARIO",insertable = false,updatable = false)
     public FuncionarioEntity getFuncionarioByIdfuncionario() {
         return funcionarioByIdfuncionario;
     }

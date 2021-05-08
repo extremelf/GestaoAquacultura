@@ -69,7 +69,7 @@ public class EncomendafEntity {
     }
 
     @Basic
-    @Column(name = "IDFORNECEDOR", nullable = true, precision = 0)
+    @Column(name = "IDFORNECEDOR",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdfornecedor() {
         return idfornecedor;
     }
@@ -79,7 +79,7 @@ public class EncomendafEntity {
     }
 
     @Basic
-    @Column(name = "IDFUNCIONARIO", nullable = true, precision = 0)
+    @Column(name = "IDFUNCIONARIO",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdfuncionario() {
         return idfuncionario;
     }
@@ -89,7 +89,7 @@ public class EncomendafEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDFORNECEDOR", referencedColumnName = "IDFORNECEDOR")
+    @JoinColumn(name = "IDFORNECEDOR", referencedColumnName = "IDFORNECEDOR",insertable = false,updatable = false)
     public FornecedorEntity getFornecedorByIdfornecedor() {
         return fornecedorByIdfornecedor;
     }
@@ -99,7 +99,7 @@ public class EncomendafEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDFUNCIONARIO", referencedColumnName = "IDFUNCIONARIO")
+    @JoinColumn(name = "IDFUNCIONARIO", referencedColumnName = "IDFUNCIONARIO",insertable = false,updatable = false)
     public FuncionarioEntity getFuncionarioByIdfuncionario() {
         return funcionarioByIdfuncionario;
     }
