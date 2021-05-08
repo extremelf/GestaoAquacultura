@@ -33,6 +33,11 @@
             <artifactId>hibernate-validator</artifactId>
             <version>7.0.1.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-hikaricp</artifactId>
+            <version>6.0.0.Alpha7</version>
+        </dependency>
     </dependencies>
 
     <properties>
