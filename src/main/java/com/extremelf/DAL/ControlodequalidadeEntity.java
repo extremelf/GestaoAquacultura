@@ -21,7 +21,7 @@ public class ControlodequalidadeEntity {
     private TanqueEntity tanqueByIdtanque;
 
     @Id
-    @Column(name = "IDTIPODECONTROLO", nullable = false, precision = 0)
+    @Column(name = "IDTIPODECONTROLO",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdtipodecontrolo() {
         return idtipodecontrolo;
     }
@@ -31,7 +31,7 @@ public class ControlodequalidadeEntity {
     }
 
     @Id
-    @Column(name = "IDFUNCIONARIO", nullable = false, precision = 0)
+    @Column(name = "IDFUNCIONARIO",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdfuncionario() {
         return idfuncionario;
     }
@@ -41,7 +41,7 @@ public class ControlodequalidadeEntity {
     }
 
     @Id
-    @Column(name = "IDTANQUE", nullable = false, precision = 0)
+    @Column(name = "IDTANQUE",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdtanque() {
         return idtanque;
     }
@@ -64,7 +64,7 @@ public class ControlodequalidadeEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDTIPODECONTROLO", referencedColumnName = "IDTIPODECONTROLO", nullable = false)
+    @JoinColumn(name = "IDTIPODECONTROLO", referencedColumnName = "IDTIPODECONTROLO",insertable = false,updatable = false, nullable = false)
     public TipoDeControloEntity getTipoDeControloByIdtipodecontrolo() {
         return tipoDeControloByIdtipodecontrolo;
     }
@@ -74,7 +74,7 @@ public class ControlodequalidadeEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDFUNCIONARIO", referencedColumnName = "IDFUNCIONARIO", nullable = false)
+    @JoinColumn(name = "IDFUNCIONARIO", referencedColumnName = "IDFUNCIONARIO",insertable = false,updatable = false, nullable = false)
     public FuncionarioEntity getFuncionarioByIdfuncionario() {
         return funcionarioByIdfuncionario;
     }
@@ -84,7 +84,7 @@ public class ControlodequalidadeEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDTANQUE", referencedColumnName = "IDTANQUE", nullable = false)
+    @JoinColumn(name = "IDTANQUE", referencedColumnName = "IDTANQUE",insertable = false,updatable = false, nullable = false)
     public TanqueEntity getTanqueByIdtanque() {
         return tanqueByIdtanque;
     }

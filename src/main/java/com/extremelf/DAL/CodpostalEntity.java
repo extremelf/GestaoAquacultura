@@ -51,7 +51,7 @@ public class CodpostalEntity {
         return Objects.hash(codigopostal, descricao);
     }
 
-    @OneToMany(mappedBy = "codpostalByCodigopostal")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "codpostalByCodigopostal")
     public Collection<ClienteEntity> getClientesByCodigopostal() {
         return clientesByCodigopostal;
     }
@@ -60,7 +60,7 @@ public class CodpostalEntity {
         this.clientesByCodigopostal = clientesByCodigopostal;
     }
 
-    @OneToMany(mappedBy = "codpostalByCodigopostal")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "codpostalByCodigopostal")
     public Collection<FornecedorEntity> getFornecedorsByCodigopostal() {
         return fornecedorsByCodigopostal;
     }
@@ -69,7 +69,7 @@ public class CodpostalEntity {
         this.fornecedorsByCodigopostal = fornecedorsByCodigopostal;
     }
 
-    @OneToMany(mappedBy = "codpostalByCodigopostal")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "codpostalByCodigopostal")
     public Collection<FuncionarioEntity> getFuncionariosByCodigopostal() {
         return funcionariosByCodigopostal;
     }

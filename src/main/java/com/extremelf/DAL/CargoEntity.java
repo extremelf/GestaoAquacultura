@@ -48,7 +48,7 @@ public class CargoEntity {
         return Objects.hash(idcargo, descricao);
     }
 
-    @OneToMany(mappedBy = "cargoByIdcargo")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "cargoByIdcargo")
     public Collection<FuncionarioEntity> getFuncionariosByIdcargo() {
         return funcionariosByIdcargo;
     }

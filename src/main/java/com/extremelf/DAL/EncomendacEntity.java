@@ -24,7 +24,7 @@ public class EncomendacEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    @Column(name = "IDENCOMENDAC", nullable = false, precision = 0)
+    @Column(name = "IDENCOMENDAC",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdencomendac() {
         return idencomendac;
     }
@@ -67,7 +67,7 @@ public class EncomendacEntity {
     }
 
     @Basic
-    @Column(name = "IDFUNCIONARIO", nullable = true, precision = 0)
+    @Column(name = "IDFUNCIONARIO",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdfuncionario() {
         return idfuncionario;
     }
@@ -77,7 +77,7 @@ public class EncomendacEntity {
     }
 
     @Basic
-    @Column(name = "IDCLIENTE", nullable = true, precision = 0)
+    @Column(name = "IDCLIENTE",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdcliente() {
         return idcliente;
     }

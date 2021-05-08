@@ -64,7 +64,7 @@ public class LinhaencomendafEntity {
     }
 
     @Basic
-    @Column(name = "IDENCOMENDAF", nullable = true, precision = 0)
+    @Column(name = "IDENCOMENDAF",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdencomendaf() {
         return idencomendaf;
     }
@@ -74,7 +74,7 @@ public class LinhaencomendafEntity {
     }
 
     @Basic
-    @Column(name = "IDESPECIE", nullable = true, precision = 0)
+    @Column(name = "IDESPECIE",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdespecie() {
         return idespecie;
     }

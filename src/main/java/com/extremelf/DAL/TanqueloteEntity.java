@@ -21,7 +21,7 @@ public class TanqueloteEntity {
     private TanqueEntity tanqueByIdtanque;
 
     @Id
-    @Column(name = "IDLOTE", nullable = false, precision = 0)
+    @Column(name = "IDLOTE",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdlote() {
         return idlote;
     }
@@ -31,7 +31,7 @@ public class TanqueloteEntity {
     }
 
     @Id
-    @Column(name = "IDTANQUE", nullable = false, precision = 0)
+    @Column(name = "IDTANQUE",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdtanque() {
         return idtanque;
     }
@@ -74,7 +74,7 @@ public class TanqueloteEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDLOTE", referencedColumnName = "IDLOTE", nullable = false)
+    @JoinColumn(name = "IDLOTE", referencedColumnName = "IDLOTE",insertable = false,updatable = false, nullable = false)
     public LoteEntity getLoteByIdlote() {
         return loteByIdlote;
     }
@@ -84,7 +84,7 @@ public class TanqueloteEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDTANQUE", referencedColumnName = "IDTANQUE", nullable = false)
+    @JoinColumn(name = "IDTANQUE", referencedColumnName = "IDTANQUE",insertable = false,updatable = false, nullable = false)
     public TanqueEntity getTanqueByIdtanque() {
         return tanqueByIdtanque;
     }

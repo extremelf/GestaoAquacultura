@@ -20,8 +20,7 @@ public class LinhadeencomendacEntity {
     private LoteEntity loteByIdlote;
 
     @Id
-
-    @Column(name = "IDENCOMENDAC", nullable = false, precision = 0)
+    @Column(name = "IDENCOMENDAC",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdencomendac() {
         return idencomendac;
     }
@@ -31,7 +30,7 @@ public class LinhadeencomendacEntity {
     }
 
     @Id
-    @Column(name = "IDLOTE", nullable = false, precision = 0)
+    @Column(name = "IDLOTE",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdlote() {
         return idlote;
     }
@@ -74,7 +73,7 @@ public class LinhadeencomendacEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDENCOMENDAC", referencedColumnName = "IDENCOMENDAC", nullable = false)
+    @JoinColumn(name = "IDENCOMENDAC", referencedColumnName = "IDENCOMENDAC",insertable = false,updatable = false, nullable = false)
     public EncomendacEntity getEncomendacByIdencomendac() {
         return encomendacByIdencomendac;
     }
@@ -84,7 +83,7 @@ public class LinhadeencomendacEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDLOTE", referencedColumnName = "IDLOTE", nullable = false)
+    @JoinColumn(name = "IDLOTE", referencedColumnName = "IDLOTE",insertable = false,updatable = false, nullable = false)
     public LoteEntity getLoteByIdlote() {
         return loteByIdlote;
     }

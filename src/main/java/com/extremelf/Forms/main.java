@@ -1,41 +1,22 @@
 package com.extremelf.Forms;
 
 
+import javax.swing.*;
+
 public class main {
     public static void main(String[] args) {
-       /* String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
-        String username = "DataBaseProj";
-        String password = "123";
 
-
+        JFrame frame = new JFrame("Hello World Swing!");
+        frame.setContentPane(new Cliente().getPanelCli());
+        frame.setSize(500, 400);
         try {
-            Connection connection = DriverManager.getConnection(dbURL, username, password);
-            System.out.println("Connected successfully");
-
-            String sql = "INSERT INTO CARGO (DESCRICAO) VALUES (?)";
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
-            statement.setString(1,"Teste");
-
-            int rows = statement.executeUpdate();
-
-            if(rows > 0){
-                System.out.println("A row has been selected");
-            }
-            statement.close();
-            connection.close();
-
-        } catch(SQLException e){
-            System.out.println("Error connecting database: ");
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+        } catch (ClassNotFoundException | UnsupportedLookAndFeelException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
-
-
-        */
-
-
-        new start();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
 
 
 

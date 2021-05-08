@@ -57,7 +57,7 @@ public class LoteEntity {
     }
 
     @Basic
-    @Column(name = "IDESPECIE", nullable = true, precision = 0)
+    @Column(name = "IDESPECIE",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdespecie() {
         return idespecie;
     }
@@ -67,7 +67,7 @@ public class LoteEntity {
     }
 
     @Basic
-    @Column(name = "IDFUNCIONARIO", nullable = true, precision = 0)
+    @Column(name = "IDFUNCIONARIO",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdfuncionario() {
         return idfuncionario;
     }
@@ -77,7 +77,7 @@ public class LoteEntity {
     }
 
     @Basic
-    @Column(name = "IDCLIENTE", nullable = true, precision = 0)
+    @Column(name = "IDCLIENTE",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdcliente() {
         return idcliente;
     }
