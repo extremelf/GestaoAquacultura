@@ -1,5 +1,7 @@
 package com.extremelf.DAL;
 
+import org.hibernate.annotations.Generated;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -26,6 +28,7 @@ public class ClienteEntity {
     private Collection<LoteEntity> lotesByIdcliente;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "IDCLIENTE", nullable = false, precision = 0)
     public long getIdcliente() {
         return idcliente;

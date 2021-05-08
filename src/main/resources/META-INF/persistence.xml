@@ -26,6 +26,7 @@
         <class>com.extremelf.DAL.CargoEntity</class>
         <class>com.extremelf.DAL.ClienteEntity</class>
         <properties>
+            <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
             <property name="hibernate.connection.url" value="jdbc:oracle:thin:@192.168.1.83:1521:XE"/>
             <property name="hibernate.connection.username" value="projeto"/>
@@ -34,6 +35,9 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.jdbc.batch_size" value="50"/>
+            <property name="hibernate.order_inserts" value="true"/>
+            <property name="hibernate.order_updates" value="true"/>
 
         </properties>
     </persistence-unit>
