@@ -102,7 +102,7 @@ public class TanqueespecieEntity {
     }
 
     @Basic
-    @Column(name = "IDESPECIE", nullable = true, precision = 0)
+    @Column(name = "IDESPECIE",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdespecie() {
         return idespecie;
     }
@@ -112,7 +112,7 @@ public class TanqueespecieEntity {
     }
 
     @Basic
-    @Column(name = "IDRACAO", nullable = true, precision = 0)
+    @Column(name = "IDRACAO",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdracao() {
         return idracao;
     }
@@ -122,7 +122,7 @@ public class TanqueespecieEntity {
     }
 
     @Basic
-    @Column(name = "IDTANQUE", nullable = true, precision = 0)
+    @Column(name = "IDTANQUE",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdtanque() {
         return idtanque;
     }
@@ -132,7 +132,7 @@ public class TanqueespecieEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDESPECIE", referencedColumnName = "IDESPECIE")
+    @JoinColumn(name = "IDESPECIE", referencedColumnName = "IDESPECIE",insertable = false,updatable = false)
     public EspecieEntity getEspecieByIdespecie() {
         return especieByIdespecie;
     }
@@ -142,7 +142,7 @@ public class TanqueespecieEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDRACAO", referencedColumnName = "IDRACAO")
+    @JoinColumn(name = "IDRACAO", referencedColumnName = "IDRACAO",insertable = false,updatable = false)
     public RacaoEntity getRacaoByIdracao() {
         return racaoByIdracao;
     }
@@ -152,7 +152,7 @@ public class TanqueespecieEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDTANQUE", referencedColumnName = "IDTANQUE")
+    @JoinColumn(name = "IDTANQUE", referencedColumnName = "IDTANQUE",insertable = false,updatable = false)
     public TanqueEntity getTanqueByIdtanque() {
         return tanqueByIdtanque;
     }

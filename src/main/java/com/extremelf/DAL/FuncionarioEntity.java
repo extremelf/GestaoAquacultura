@@ -105,7 +105,7 @@ public class FuncionarioEntity {
     }
 
     @Basic
-    @Column(name = "IDCARGO", nullable = true, precision = 0)
+    @Column(name = "IDCARGO",insertable = false,updatable = false, nullable = true, precision = 0)
     public Long getIdcargo() {
         return idcargo;
     }
@@ -114,8 +114,7 @@ public class FuncionarioEntity {
         this.idcargo = idcargo;
     }
 
-    @Basic
-    @Column(name = "CODIGOPOSTAL", nullable = true, length = 20, insertable = false, updatable = false)
+    @Column(name = "CODIGOPOSTAL",insertable = false, updatable = false, nullable = true, length = 20)
     public String getCodigopostal() {
         return codigopostal;
     }

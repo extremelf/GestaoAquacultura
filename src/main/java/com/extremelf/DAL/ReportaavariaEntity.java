@@ -24,7 +24,7 @@ public class ReportaavariaEntity {
     private TanqueEntity tanqueByIdtanque;
 
     @Id
-    @Column(name = "IDTIPODEAVARIA", nullable = false, precision = 0)
+    @Column(name = "IDTIPODEAVARIA",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdtipodeavaria() {
         return idtipodeavaria;
     }
@@ -34,7 +34,7 @@ public class ReportaavariaEntity {
     }
 
     @Id
-    @Column(name = "IDFUNCIONARIO", nullable = false, precision = 0)
+    @Column(name = "IDFUNCIONARIO",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdfuncionario() {
         return idfuncionario;
     }
@@ -44,7 +44,7 @@ public class ReportaavariaEntity {
     }
 
     @Id
-    @Column(name = "IDTANQUE", nullable = false, precision = 0)
+    @Column(name = "IDTANQUE",insertable = false,updatable = false, nullable = false, precision = 0)
     public long getIdtanque() {
         return idtanque;
     }
@@ -87,7 +87,7 @@ public class ReportaavariaEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDTIPODEAVARIA", referencedColumnName = "IDTIPODEAVARIA", nullable = false)
+    @JoinColumn(name = "IDTIPODEAVARIA", referencedColumnName = "IDTIPODEAVARIA",insertable = false,updatable = false, nullable = false)
     public TipoDeAvariaEntity getTipoDeAvariaByIdtipodeavaria() {
         return tipoDeAvariaByIdtipodeavaria;
     }
@@ -97,7 +97,7 @@ public class ReportaavariaEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDFUNCIONARIO", referencedColumnName = "IDFUNCIONARIO", nullable = false)
+    @JoinColumn(name = "IDFUNCIONARIO", referencedColumnName = "IDFUNCIONARIO",insertable = false,updatable = false, nullable = false)
     public FuncionarioEntity getFuncionarioByIdfuncionario() {
         return funcionarioByIdfuncionario;
     }
@@ -107,7 +107,7 @@ public class ReportaavariaEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IDTANQUE", referencedColumnName = "IDTANQUE", nullable = false)
+    @JoinColumn(name = "IDTANQUE", referencedColumnName = "IDTANQUE",insertable = false,updatable = false, nullable = false)
     public TanqueEntity getTanqueByIdtanque() {
         return tanqueByIdtanque;
     }

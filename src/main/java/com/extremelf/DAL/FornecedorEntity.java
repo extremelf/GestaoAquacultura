@@ -86,7 +86,7 @@ public class FornecedorEntity {
     }
 
     @Basic
-    @Column(name = "CODIGOPOSTAL", nullable = true, length = 10, insertable = false, updatable = false)
+    @Column(name = "CODIGOPOSTAL",insertable = false,updatable = false, nullable = true, length = 10)
     public String getCodigopostal() {
         return codigopostal;
     }

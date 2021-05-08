@@ -49,7 +49,8 @@ public class AguaEntity {
         return Objects.hash(idagua, descricao);
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "aguaByIdagua")
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "aguaByIdagua")
     public Collection<TanqueEntity> getTanquesByIdagua() {
         return tanquesByIdagua;
     }
