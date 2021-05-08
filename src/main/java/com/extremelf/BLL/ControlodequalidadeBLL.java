@@ -28,7 +28,7 @@ public class ControlodequalidadeBLL {
         em.getTransaction().commit();
     }
 
-    public static ControlodequalidadeEntity read(int idControloQualidade, int idFuncionario,int idTanque){
+    public static ControlodequalidadeEntity readByIds(int idControloQualidade, int idFuncionario,int idTanque){
         ControlodequalidadeEntity controlodequalidade;
         if(factory == null){
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
@@ -39,6 +39,52 @@ public class ControlodequalidadeBLL {
         Query q1 = em.createNamedQuery("ControloDeQualidade.findByIds");
         q1.setParameter("idTipoControlo",idControloQualidade);
         q1.setParameter("idFuncionario",idFuncionario);
+        q1.setParameter("idTanque",idTanque);
+
+        Object obj = q1.getSingleResult();
+
+        if(obj != null){
+            controlodequalidade = (ControlodequalidadeEntity) obj;
+        }
+        else{
+            return null;
+        }
+
+        return controlodequalidade;
+    }
+
+    public static ControlodequalidadeEntity readByIdFuncionario(int idFuncionario){
+        ControlodequalidadeEntity controlodequalidade;
+        if(factory == null){
+            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        }
+
+        if(em == null) em = factory.createEntityManager();
+
+        Query q1 = em.createNamedQuery("ControloDeQualidade.findByIdFuncionario");
+        q1.setParameter("idFuncionario",idFuncionario);
+
+        Object obj = q1.getSingleResult();
+
+        if(obj != null){
+            controlodequalidade = (ControlodequalidadeEntity) obj;
+        }
+        else{
+            return null;
+        }
+
+        return controlodequalidade;
+    }
+
+    public static ControlodequalidadeEntity readByIdTanque(int idTanque){
+        ControlodequalidadeEntity controlodequalidade;
+        if(factory == null){
+            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        }
+
+        if(em == null) em = factory.createEntityManager();
+
+        Query q1 = em.createNamedQuery("ControloDeQualidade.findByIdTanque");
         q1.setParameter("idTanque",idTanque);
 
         Object obj = q1.getSingleResult();
