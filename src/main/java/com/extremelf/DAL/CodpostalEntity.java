@@ -19,7 +19,7 @@ public class CodpostalEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    @Column(name = "CODIGOPOSTAL", nullable = false, length = 10)
+    @Column(name = "CODIGOPOSTAL", nullable = false, length = 10, insertable = false, updatable = false)
     public String getCodigopostal() {
         return codigopostal;
     }
@@ -50,7 +50,7 @@ public class CodpostalEntity {
     public int hashCode() {
         return Objects.hash(codigopostal, descricao);
     }
-
+  
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "codpostalByCodigopostal")
     public Collection<ClienteEntity> getClientesByCodigopostal() {
         return clientesByCodigopostal;
@@ -68,7 +68,7 @@ public class CodpostalEntity {
     public void setFornecedorsByCodigopostal(Collection<FornecedorEntity> fornecedorsByCodigopostal) {
         this.fornecedorsByCodigopostal = fornecedorsByCodigopostal;
     }
-
+  
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "codpostalByCodigopostal")
     public Collection<FuncionarioEntity> getFuncionariosByCodigopostal() {
         return funcionariosByCodigopostal;

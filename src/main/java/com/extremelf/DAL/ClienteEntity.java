@@ -128,6 +128,7 @@ public class ClienteEntity {
         this.codpostalByCodigopostal = codpostalByCodigopostal;
     }
 
+
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "clienteByIdcliente")
     public Collection<EncomendacEntity> getEncomendacsByIdcliente() {
         return encomendacsByIdcliente;
@@ -136,6 +137,7 @@ public class ClienteEntity {
     public void setEncomendacsByIdcliente(Collection<EncomendacEntity> encomendacsByIdcliente) {
         this.encomendacsByIdcliente = encomendacsByIdcliente;
     }
+
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "clienteByIdcliente")
     public Collection<LoteEntity> getLotesByIdcliente() {

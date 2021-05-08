@@ -62,7 +62,7 @@ public class EspecieEntity {
         return Objects.hash(idespecie, nome, descricao);
     }
 
-    @OneToMany(mappedBy = "especieByIdespecie")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "especieByIdespecie")
     public Collection<LinhaencomendafEntity> getLinhaencomendafsByIdespecie() {
         return linhaencomendafsByIdespecie;
     }
@@ -71,7 +71,7 @@ public class EspecieEntity {
         this.linhaencomendafsByIdespecie = linhaencomendafsByIdespecie;
     }
 
-    @OneToMany(mappedBy = "especieByIdespecie")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "especieByIdespecie")
     public Collection<LoteEntity> getLotesByIdespecie() {
         return lotesByIdespecie;
     }
@@ -80,7 +80,7 @@ public class EspecieEntity {
         this.lotesByIdespecie = lotesByIdespecie;
     }
 
-    @OneToMany(mappedBy = "especieByIdespecie")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "especieByIdespecie")
     public Collection<TanqueespecieEntity> getTanqueespeciesByIdespecie() {
         return tanqueespeciesByIdespecie;
     }

@@ -71,7 +71,7 @@ public class RacaoEntity {
         return Objects.hash(idracao, preco, marcasdealimento, descricao);
     }
 
-    @OneToMany(mappedBy = "racaoByIdracao")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "racaoByIdracao")
     public Collection<TanqueespecieEntity> getTanqueespeciesByIdracao() {
         return tanqueespeciesByIdracao;
     }

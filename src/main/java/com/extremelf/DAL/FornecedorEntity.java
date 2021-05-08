@@ -95,7 +95,7 @@ public class FornecedorEntity {
         this.codigopostal = codigopostal;
     }
 
-    @OneToMany(mappedBy = "fornecedorByIdfornecedor")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fornecedorByIdfornecedor")
     public Collection<EncomendafEntity> getEncomendafsByIdfornecedor() {
         return encomendafsByIdfornecedor;
     }

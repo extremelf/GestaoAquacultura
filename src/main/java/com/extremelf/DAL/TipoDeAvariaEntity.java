@@ -49,7 +49,7 @@ public class TipoDeAvariaEntity {
         return Objects.hash(idtipodeavaria, descricao);
     }
 
-    @OneToMany(mappedBy = "tipoDeAvariaByIdtipodeavaria")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tipoDeAvariaByIdtipodeavaria")
     public Collection<ReportaavariaEntity> getReportaavariasByIdtipodeavaria() {
         return reportaavariasByIdtipodeavaria;
     }
