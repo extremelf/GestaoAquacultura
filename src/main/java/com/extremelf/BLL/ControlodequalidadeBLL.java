@@ -16,67 +16,110 @@ public class ControlodequalidadeBLL {
     private static EntityManagerFactory factory = null;
     private static EntityManager em = null;
 
-    public static void create(ControlodequalidadeEntity controlodequalidade){
-        if(factory == null){
+    public static void create(ControlodequalidadeEntity controlodequalidade) {
+        if (factory == null) {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         }
 
-        if(em == null) em = factory.createEntityManager();
+        if (em == null) em = factory.createEntityManager();
 
         em.getTransaction().begin();
         em.persist(controlodequalidade);
         em.getTransaction().commit();
     }
 
-    public static ControlodequalidadeEntity read(int idControloQualidade, int idFuncionario,int idTanque){
+    public static ControlodequalidadeEntity readByIds(int idControloQualidade, int idFuncionario, int idTanque) {
         ControlodequalidadeEntity controlodequalidade;
-        if(factory == null){
+        if (factory == null) {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         }
 
-        if(em == null) em = factory.createEntityManager();
+        if (em == null) em = factory.createEntityManager();
 
         Query q1 = em.createNamedQuery("ControloDeQualidade.findByIds");
-        q1.setParameter("idTipoControlo",idControloQualidade);
-        q1.setParameter("idFuncionario",idFuncionario);
-        q1.setParameter("idTanque",idTanque);
+        q1.setParameter("idTipoControlo", idControloQualidade);
+        q1.setParameter("idFuncionario", idFuncionario);
+        q1.setParameter("idTanque", idTanque);
 
         Object obj = q1.getSingleResult();
 
-        if(obj != null){
+        if (obj != null) {
             controlodequalidade = (ControlodequalidadeEntity) obj;
-        }
-        else{
+        } else {
             return null;
         }
 
         return controlodequalidade;
     }
 
-    public static List<ControlodequalidadeEntity> readAll(){
-        List<ControlodequalidadeEntity> controlodequalidade = new ArrayList<>();
-        if(factory == null){
+    public static ControlodequalidadeEntity readByIdFuncionar(int idFuncionario) {
+        ControlodequalidadeEntity controlodequalidade;
+        if (factory == null) {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         }
 
-        if(em == null) em = factory.createEntityManager();
+        if (em == null) em = factory.createEntityManager();
+
+        Query q1 = em.createNamedQuery("ControloDeQualidade.findByIdFuncionario");
+        q1.setParameter("idFuncionario", idFuncionario);
+
+        Object obj = q1.getSingleResult();
+
+        if (obj != null) {
+            controlodequalidade = (ControlodequalidadeEntity) obj;
+        } else {
+            return null;
+        }
+
+        return controlodequalidade;
+    }
+
+    public static ControlodequalidadeEntity readByIdTanque(int idTanque) {
+        ControlodequalidadeEntity controlodequalidade;
+        if (factory == null) {
+            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        }
+
+        if (em == null) em = factory.createEntityManager();
+
+        Query q1 = em.createNamedQuery("ControloDeQualidade.findByIdTanque");
+        q1.setParameter("idTanque", idTanque);
+
+        Object obj = q1.getSingleResult();
+
+        if (obj != null) {
+            controlodequalidade = (ControlodequalidadeEntity) obj;
+        } else {
+            return null;
+        }
+
+        return controlodequalidade;
+    }
+
+    public static List<ControlodequalidadeEntity> readAll() {
+        List<ControlodequalidadeEntity> controlodequalidade = new ArrayList<>();
+        if (factory == null) {
+            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        }
+
+        if (em == null) em = factory.createEntityManager();
 
         Query q1 = em.createNamedQuery("ControloDeQualidade.findAll");
         List<Object> result = q1.getResultList();
 
-        for(Object resultado: result){
+        for (Object resultado : result) {
             controlodequalidade.add((ControlodequalidadeEntity) resultado);
         }
 
         return controlodequalidade;
     }
 
-    public static void update(ControlodequalidadeEntity controlodequalidade){
-        if(factory == null){
+    public static void update(ControlodequalidadeEntity controlodequalidade) {
+        if (factory == null) {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         }
 
-        if(em == null) em = factory.createEntityManager();
+        if (em == null) em = factory.createEntityManager();
 
 
         em.getTransaction().begin();
@@ -84,12 +127,12 @@ public class ControlodequalidadeBLL {
         em.getTransaction().commit();
     }
 
-    public static void delete(ControlodequalidadeEntity controlodequalidade){
-        if(factory == null){
+    public static void delete(ControlodequalidadeEntity controlodequalidade) {
+        if (factory == null) {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         }
 
-        if(em == null) em = factory.createEntityManager();
+        if (em == null) em = factory.createEntityManager();
         em.getTransaction().begin();
         em.remove(controlodequalidade);
         em.getTransaction().commit();
