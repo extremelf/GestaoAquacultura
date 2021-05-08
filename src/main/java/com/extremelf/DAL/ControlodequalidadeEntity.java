@@ -7,9 +7,7 @@ import java.util.Objects;
 @Table(name = "CONTROLODEQUALIDADE", schema = "PROJETO", catalog = "")
 @NamedQueries({
         @NamedQuery(name = "ControloDeQualidade.findAll", query = "SELECT a FROM ControlodequalidadeEntity a"),
-        @NamedQuery(name = "ControloDeQualidade.findByIds", query = "SELECT a FROM ControlodequalidadeEntity a WHERE a.idtipodecontrolo = :idTipoControlo  AND a.idfuncionario = :idFuncionario AND a.idtanque = :idTanque"),
-        @NamedQuery(name = "ControloDeQualidade.findByIdFuncionario", query = "SELECT a FROM ControlodequalidadeEntity a WHERE a.idfuncionario = :idFuncionario"),
-        @NamedQuery(name = "ControloDeQualidade.findByIdTanque", query = "SELECT a FROM ControlodequalidadeEntity a WHERE a.idtanque = :idTanque")
+        @NamedQuery(name = "ControloDeQualidade.findByIds", query = "SELECT a FROM ControlodequalidadeEntity a WHERE a.idtipodecontrolo = :idTipoControlo  AND a.idfuncionario = :idFuncionario AND a.idtanque = :idTanque")
 })
 @IdClass(ControlodequalidadeEntityPK.class)
 public class ControlodequalidadeEntity {

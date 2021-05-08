@@ -6,6 +6,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "LOTE", schema = "PROJETO", catalog = "")
+@NamedQueries({
+        @NamedQuery(name= "Lote.findAll", query = "SELECT a from LoteEntity a "),
+        @NamedQuery(name = "Lote.findbyId", query = "SELECT a from LoteEntity a where a.idlote = :idlote")
+})
 public class LoteEntity {
     private long idlote;
     private Long quantidade;

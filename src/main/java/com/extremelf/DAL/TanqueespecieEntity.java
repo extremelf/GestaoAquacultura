@@ -1,11 +1,19 @@
 package com.extremelf.DAL;
 
+import jdk.jfr.Name;
+
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TANQUEESPECIE", schema = "PROJETO", catalog = "")
+@NamedQueries({
+        @NamedQuery(name= "Tanqueespecie.findAll", query = "SELECT a from TanqueespecieEntity a "),
+        @NamedQuery(name = "Tanqueespecie.findbyId", query = "SELECT a from TanqueespecieEntity a where a.idlotedecriacao = :idlotedecriacao"),
+        @NamedQuery(name = "Tanqueespecie.findbyEspecie", query = "SELECT a FROM TanqueespecieEntity a where a.idespecie = :idespecie"),
+        @NamedQuery(name = "Tanqueespecie.findbyTanque", query = "SELECT a FROM TanqueespecieEntity a where a.idtanque = :idtanque")
+})
 public class TanqueespecieEntity {
     private long idlotedecriacao;
     private String fasedecrescimento;
