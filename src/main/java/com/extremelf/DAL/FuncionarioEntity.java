@@ -115,7 +115,7 @@ public class FuncionarioEntity {
     }
 
     @Basic
-    @Column(name = "CODIGOPOSTAL", nullable = true, length = 20)
+    @Column(name = "CODIGOPOSTAL", nullable = true, length = 20, insertable = false, updatable = false)
     public String getCodigopostal() {
         return codigopostal;
     }
@@ -124,7 +124,7 @@ public class FuncionarioEntity {
         this.codigopostal = codigopostal;
     }
 
-    @OneToMany(mappedBy = "funcionarioByIdfuncionario")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funcionarioByIdfuncionario")
     public Collection<ControlodequalidadeEntity> getControlodequalidadesByIdfuncionario() {
         return controlodequalidadesByIdfuncionario;
     }
@@ -133,7 +133,7 @@ public class FuncionarioEntity {
         this.controlodequalidadesByIdfuncionario = controlodequalidadesByIdfuncionario;
     }
 
-    @OneToMany(mappedBy = "funcionarioByIdfuncionario")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funcionarioByIdfuncionario")
     public Collection<EncomendacEntity> getEncomendacsByIdfuncionario() {
         return encomendacsByIdfuncionario;
     }
@@ -142,7 +142,7 @@ public class FuncionarioEntity {
         this.encomendacsByIdfuncionario = encomendacsByIdfuncionario;
     }
 
-    @OneToMany(mappedBy = "funcionarioByIdfuncionario")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funcionarioByIdfuncionario")
     public Collection<EncomendafEntity> getEncomendafsByIdfuncionario() {
         return encomendafsByIdfuncionario;
     }
@@ -171,7 +171,7 @@ public class FuncionarioEntity {
         this.codpostalByCodigopostal = codpostalByCodigopostal;
     }
 
-    @OneToMany(mappedBy = "funcionarioByIdfuncionario")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funcionarioByIdfuncionario")
     public Collection<LoteEntity> getLotesByIdfuncionario() {
         return lotesByIdfuncionario;
     }
@@ -180,7 +180,7 @@ public class FuncionarioEntity {
         this.lotesByIdfuncionario = lotesByIdfuncionario;
     }
 
-    @OneToMany(mappedBy = "funcionarioByIdfuncionario")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funcionarioByIdfuncionario")
     public Collection<ReportaavariaEntity> getReportaavariasByIdfuncionario() {
         return reportaavariasByIdfuncionario;
     }
@@ -189,7 +189,7 @@ public class FuncionarioEntity {
         this.reportaavariasByIdfuncionario = reportaavariasByIdfuncionario;
     }
 
-    @OneToMany(mappedBy = "funcionarioByIdfuncionario")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funcionarioByIdfuncionario")
     public Collection<TanqueEntity> getTanquesByIdfuncionario() {
         return tanquesByIdfuncionario;
     }

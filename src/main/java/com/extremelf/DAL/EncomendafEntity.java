@@ -108,7 +108,7 @@ public class EncomendafEntity {
         this.funcionarioByIdfuncionario = funcionarioByIdfuncionario;
     }
 
-    @OneToMany(mappedBy = "encomendafByIdencomendaf")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "encomendafByIdencomendaf")
     public Collection<LinhaencomendafEntity> getLinhaencomendafsByIdencomendaf() {
         return linhaencomendafsByIdencomendaf;
     }

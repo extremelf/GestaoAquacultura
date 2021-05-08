@@ -56,7 +56,7 @@ public class ClienteEntity {
     }
 
     @Basic
-    @Column(name = "CODIGOPOSTAL", nullable = true, length = 20)
+    @Column(name = "CODIGOPOSTAL", nullable = true, length = 20, insertable = false, updatable = false)
     public String getCodigopostal() {
         return codigopostal;
     }
@@ -128,7 +128,7 @@ public class ClienteEntity {
         this.codpostalByCodigopostal = codpostalByCodigopostal;
     }
 
-    @OneToMany(mappedBy = "clienteByIdcliente")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clienteByIdcliente")
     public Collection<EncomendacEntity> getEncomendacsByIdcliente() {
         return encomendacsByIdcliente;
     }
@@ -137,7 +137,7 @@ public class ClienteEntity {
         this.encomendacsByIdcliente = encomendacsByIdcliente;
     }
 
-    @OneToMany(mappedBy = "clienteByIdcliente")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clienteByIdcliente")
     public Collection<LoteEntity> getLotesByIdcliente() {
         return lotesByIdcliente;
     }

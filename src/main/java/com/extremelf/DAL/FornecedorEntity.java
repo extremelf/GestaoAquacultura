@@ -86,7 +86,7 @@ public class FornecedorEntity {
     }
 
     @Basic
-    @Column(name = "CODIGOPOSTAL", nullable = true, length = 10)
+    @Column(name = "CODIGOPOSTAL", nullable = true, length = 10, insertable = false, updatable = false)
     public String getCodigopostal() {
         return codigopostal;
     }
@@ -95,7 +95,7 @@ public class FornecedorEntity {
         this.codigopostal = codigopostal;
     }
 
-    @OneToMany(mappedBy = "fornecedorByIdfornecedor")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fornecedorByIdfornecedor")
     public Collection<EncomendafEntity> getEncomendafsByIdfornecedor() {
         return encomendafsByIdfornecedor;
     }

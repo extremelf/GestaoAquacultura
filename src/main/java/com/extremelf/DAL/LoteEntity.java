@@ -86,7 +86,7 @@ public class LoteEntity {
         this.idcliente = idcliente;
     }
 
-    @OneToMany(mappedBy = "loteByIdlote")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loteByIdlote")
     public Collection<LinhadeencomendacEntity> getLinhadeencomendacsByIdlote() {
         return linhadeencomendacsByIdlote;
     }
@@ -125,7 +125,7 @@ public class LoteEntity {
         this.clienteByIdcliente = clienteByIdcliente;
     }
 
-    @OneToMany(mappedBy = "loteByIdlote")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loteByIdlote")
     public Collection<TanqueloteEntity> getTanquelotesByIdlote() {
         return tanquelotesByIdlote;
     }

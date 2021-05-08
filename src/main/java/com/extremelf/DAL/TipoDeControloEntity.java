@@ -48,7 +48,7 @@ public class TipoDeControloEntity {
         return Objects.hash(idtipodecontrolo, descricao);
     }
 
-    @OneToMany(mappedBy = "tipoDeControloByIdtipodecontrolo")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tipoDeControloByIdtipodecontrolo")
     public Collection<ControlodequalidadeEntity> getControlodequalidadesByIdtipodecontrolo() {
         return controlodequalidadesByIdtipodecontrolo;
     }

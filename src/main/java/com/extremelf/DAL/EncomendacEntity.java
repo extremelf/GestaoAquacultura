@@ -106,7 +106,7 @@ public class EncomendacEntity {
         this.clienteByIdcliente = clienteByIdcliente;
     }
 
-    @OneToMany(mappedBy = "encomendacByIdencomendac")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "encomendacByIdencomendac")
     public Collection<LinhadeencomendacEntity> getLinhadeencomendacsByIdencomendac() {
         return linhadeencomendacsByIdencomendac;
     }

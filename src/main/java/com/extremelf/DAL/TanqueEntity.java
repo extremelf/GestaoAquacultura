@@ -100,7 +100,7 @@ public class TanqueEntity {
         this.idfuncionario = idfuncionario;
     }
 
-    @OneToMany(mappedBy = "tanqueByIdtanque")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tanqueByIdtanque")
     public Collection<ControlodequalidadeEntity> getControlodequalidadesByIdtanque() {
         return controlodequalidadesByIdtanque;
     }
@@ -109,7 +109,7 @@ public class TanqueEntity {
         this.controlodequalidadesByIdtanque = controlodequalidadesByIdtanque;
     }
 
-    @OneToMany(mappedBy = "tanqueByIdtanque")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tanqueByIdtanque")
     public Collection<ReportaavariaEntity> getReportaavariasByIdtanque() {
         return reportaavariasByIdtanque;
     }
@@ -138,7 +138,7 @@ public class TanqueEntity {
         this.funcionarioByIdfuncionario = funcionarioByIdfuncionario;
     }
 
-    @OneToMany(mappedBy = "tanqueByIdtanque")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tanqueByIdtanque")
     public Collection<TanqueespecieEntity> getTanqueespeciesByIdtanque() {
         return tanqueespeciesByIdtanque;
     }
@@ -147,7 +147,7 @@ public class TanqueEntity {
         this.tanqueespeciesByIdtanque = tanqueespeciesByIdtanque;
     }
 
-    @OneToMany(mappedBy = "tanqueByIdtanque")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tanqueByIdtanque")
     public Collection<TanqueloteEntity> getTanquelotesByIdtanque() {
         return tanquelotesByIdtanque;
     }

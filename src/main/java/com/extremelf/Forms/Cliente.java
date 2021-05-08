@@ -1,8 +1,12 @@
 package com.extremelf.Forms;
 
+import com.extremelf.BLL.ClienteBLL;
+import com.extremelf.DAL.ClienteEntity;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class Cliente extends JFrame {
     private JPanel panelCli;
@@ -18,6 +22,7 @@ public class Cliente extends JFrame {
     private JButton tanquesButton;
     private JButton definiçõesButton;
     private JButton backButton;
+    private JButton refreshButton;
 
     public Cliente(){
 
@@ -32,6 +37,12 @@ public class Cliente extends JFrame {
 
             }
         });
+     refreshButton.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+             List<ClienteEntity> listacliente = ClienteBLL.readAll();
+         }
+     });
     }
 
     public JPanel getPanelCli(){
