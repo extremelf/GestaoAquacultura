@@ -5,7 +5,7 @@ import java.sql.Time;
 import java.util.Objects;
 
 @Entity
-@Table(name = "REPORTAAVARIA", schema = "DATABASEPROJ", catalog = "")
+@Table(name = "REPORTAAVARIA", schema = "PROJETO", catalog = "")
 @NamedQueries({
         @NamedQuery(name= "Reportaavaria.findAll", query = "SELECT a from ReportaavariaEntity a "),
         @NamedQuery(name = "Reportaavaria.findbyId", query = "SELECT a from ReportaavariaEntity a where a.idtipodeavaria = :idtipodeavaria"),

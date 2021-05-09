@@ -1,7 +1,6 @@
 package com.extremelf.Forms;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //import org.projetoDois.*
@@ -27,10 +26,7 @@ public class start extends JFrame {
 
     public start() {
 
-        panel5000 = new JPanel();
-        //panel5000.setLayout( new GridBagLayout());
-        //GridBagConstraints c = new GridBagConstraints();
-        //c.fill = GridBagConstraints.HORIZONTAL;
+        panel5000 = new JPanel(/*new FlowLayout(FlowLayout.LEFT,0,0)*/);
 
 
 
@@ -38,14 +34,13 @@ public class start extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.add(panel5000);
 
-        sidebar = new JPanel();
-        sidebar.setLayout(new BoxLayout(sidebar,BoxLayout.Y_AXIS));
-        sidebar.setPreferredSize(new Dimension(150, 1000));
+        //sidebar = new JPanel();
 
+        //sidebar.setPreferredSize(new Dimension(20, 200));
 
-        //sidebar.setLocation(-0,0);
+        //sidebar.setLocation(0,0);
 
-        //sidebar.setBackground(Color.PINK);
+        //sidebar.setBackground(Color.BLACK);
 
         //panel5000.add(sidebar);
 /*
@@ -74,7 +69,7 @@ public class start extends JFrame {
             }
         });
         buttonEnc.setBounds(200,300,80, 25);
-        sidebar.add(buttonEnc);
+        panel5000.add(buttonEnc);
 
         buttonFor = new JButton("Fornecedor");
         buttonFor.addActionListener(new ActionListener() {
@@ -85,7 +80,7 @@ public class start extends JFrame {
         });
 
         buttonFor.setBounds(200,400,80, 25);
-        sidebar.add(buttonFor);
+        panel5000.add(buttonFor);
 
         buttonFun = new JButton("Funcionario");
         buttonFun.addActionListener(new ActionListener() {
