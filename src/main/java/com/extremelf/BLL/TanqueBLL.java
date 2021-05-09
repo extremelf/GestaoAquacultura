@@ -1,5 +1,6 @@
 package com.extremelf.BLL;
 
+import com.extremelf.DAL.EncomendacEntity;
 import com.extremelf.DAL.ReportaavariaEntity;
 import com.extremelf.DAL.TanqueEntity;
 import com.extremelf.DAL.TanqueespecieEntity;
@@ -42,6 +43,27 @@ public class TanqueBLL {
         }
 
         return listarTanques;
+    }
+    public static TanqueEntity readByIdTanque(int idTanque) {
+        TanqueEntity Tanque;
+        if (factory == null) {
+            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        }
+
+        if (em == null) em = factory.createEntityManager();
+
+        Query q1 = em.createNamedQuery("Tanque.findbyId");
+        q1.setParameter("idtanque", idTanque);
+
+        Object obj = q1.getSingleResult();
+
+        if (obj != null) {
+            Tanque = (TanqueEntity) obj;
+        } else {
+            return null;
+        }
+
+        return Tanque;
     }
 
 

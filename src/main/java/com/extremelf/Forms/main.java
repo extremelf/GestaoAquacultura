@@ -13,7 +13,7 @@ public class main {
             e.printStackTrace();
         }
         JFrame frame = new JFrame("Hello World Swing!");
-        frame.setContentPane(new Encomendas().getPanelEnco());
+        frame.setContentPane(new Cliente().getPanelCli());
         frame.setSize(700, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
