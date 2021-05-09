@@ -10,7 +10,8 @@ import java.util.Objects;
         @NamedQuery(name= "Reportaavaria.findAll", query = "SELECT a from ReportaavariaEntity a "),
         @NamedQuery(name = "Reportaavaria.findbyId", query = "SELECT a from ReportaavariaEntity a where a.idtipodeavaria = :idtipodeavaria"),
         @NamedQuery(name = "Reportaavaria.findbyfuncionario", query = "SELECT a FROM ReportaavariaEntity a where a.idfuncionario = :idfuncionario" ),
-        @NamedQuery(name = "Reportaavaria.findabytanque", query = "SELECT a FROM ReportaavariaEntity a where a.idtanque = :idtanque" )
+        @NamedQuery(name = "Reportaavaria.findabytanque", query = "SELECT a FROM ReportaavariaEntity a where a.idtanque = :idtanque" ),
+        @NamedQuery(name = "Reportaavaria.findByIds", query = "SELECT a FROM ReportaavariaEntity a WHERE a.idtanque = :idTanque AND a.idfuncionario = :idFuncionario AND a.idtipodeavaria = :idTipoAvaria")
 })
 @IdClass(ReportaavariaEntityPK.class)
 public class ReportaavariaEntity {

@@ -22,7 +22,7 @@ public class FornecedorEntity {
     private CodpostalEntity codpostalByCodigopostal;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "IDFORNECEDOR", nullable = false, precision = 0)
     public long getIdfornecedor() {
         return idfornecedor;
