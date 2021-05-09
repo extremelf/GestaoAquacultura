@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "TIPO_DE_AVARIA", schema = "PROJETO", catalog = "")
 @NamedQueries({
-        @NamedQuery(name= "TipoDeAvaria.findAll", query = "SELECT a from TipoDeAvariaEntity a "),
+        @NamedQuery(name= "TipoDeAvaria.findAll", query = "SELECT a from TipoDeAvariaEntity a"),
         @NamedQuery(name = "TipoDeAvaria.findbyId", query = "SELECT a from TipoDeAvariaEntity a where a.idtipodeavaria = :idtipodeavaria")
 })
 public class TipoDeAvariaEntity {
@@ -16,7 +16,7 @@ public class TipoDeAvariaEntity {
     private Collection<ReportaavariaEntity> reportaavariasByIdtipodeavaria;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "IDTIPODEAVARIA", nullable = false, precision = 0)
     public long getIdtipodeavaria() {
         return idtipodeavaria;

@@ -45,6 +45,27 @@ public class LoteBLL {
         return listarLotes;
     }
 
+    public static LoteEntity readById(int idLote){
+        LoteEntity lote;
+        if (factory == null) {
+            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        }
+        if (em == null) em = factory.createEntityManager();
+
+        Query q1 = em.createNamedQuery("Lote.findbyId");
+        q1.setParameter("idlote", idLote);
+
+        Object obj = q1.getSingleResult();
+
+        if (obj != null) {
+            lote = ((LoteEntity) obj);
+        } else {
+            return null;
+        }
+
+        return lote;
+    }
+
     public static void update(LoteEntity lote) {
         if (factory == null) {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
