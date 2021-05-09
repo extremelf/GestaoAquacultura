@@ -35,7 +35,7 @@ public class FuncionarioBLL {
         if (em == null) em = factory.createEntityManager();
 
 
-        Query q1 = em.createNamedQuery("Fornecedor.findAll");
+        Query q1 = em.createNamedQuery("Funcionario.findAll");
         List<Object> result = q1.getResultList();
 
         for (Object resultado : result) {

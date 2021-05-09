@@ -44,6 +44,29 @@ public class ReportaAvariaBLL {
         return listarAvarias;
     }
 
+    public static ReportaavariaEntity readById(int idAvaria, int idTanque, int idFuncionarios) {
+        ReportaavariaEntity avaria = new ReportaavariaEntity();
+        if (factory == null) {
+            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        }
+        if (em == null) em = factory.createEntityManager();
+
+        Query q1 = em.createNamedQuery("Reportaavaria.findByIds");
+        q1.setParameter("idTanque",idTanque);
+        q1.setParameter("idFuncionario",idFuncionarios);
+        q1.setParameter("idTipoAvaria",idAvaria);
+
+        Object obj = q1.getSingleResult();
+
+        if (obj != null) {
+            avaria = ((ReportaavariaEntity) obj);
+        } else {
+            return null;
+        }
+
+        return avaria;
+    }
+
 
 
     public static void update(ReportaavariaEntity reportaAvaria) {
