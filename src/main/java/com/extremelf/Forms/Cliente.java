@@ -159,13 +159,13 @@ public class Cliente extends JFrame {
 
 
         //Adicionar combobox Lotes--------------------------------------------------------------------------
-        for(EspecieEntity lista: listaEspecies){
+        for (EspecieEntity lista : listaEspecies) {
             comboboxEspecieLote.addElement(lista.getIdespecie());
         }
-        for(ClienteEntity lista: listaClientes){
+        for (ClienteEntity lista : listaClientes) {
             comboboxClienteLote.addElement(lista.getIdcliente());
         }
-        for(FuncionarioEntity lista: listaFuncionarios){
+        for (FuncionarioEntity lista : listaFuncionarios) {
             comboboxFunncionarioLote.addElement(lista.getIdfuncionario());
         }
         //--------------------------------------------------------------------------------------------------
@@ -173,13 +173,13 @@ public class Cliente extends JFrame {
         //Adicionar Combobox -------------------------------------------------------------------------------
 
 
-        for(TanqueEntity lista: listaTanques){
+        for (TanqueEntity lista : listaTanques) {
             boxTanque.addElement(lista.getIdtanque());
         }
-        for(FuncionarioEntity lista: listaFuncionarios){
+        for (FuncionarioEntity lista : listaFuncionarios) {
             boxFuncionario.addElement(lista.getIdfuncionario());
         }
-        for(TipoDeAvariaEntity lista: listaDeAvarias){
+        for (TipoDeAvariaEntity lista : listaDeAvarias) {
             boxTipoDeAvaria.addElement(lista.getIdtipodeavaria());
         }
         //--------------------------------------------------------------------------------------------------
@@ -208,13 +208,13 @@ public class Cliente extends JFrame {
         fornecedorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                cardLayout.show(Cards1,"Card4");
+                cardLayout.show(Cards1, "Card4");
             }
         });
         manutencaoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                cardLayout.show(Cards1,"Card5");
+                cardLayout.show(Cards1, "Card5");
             }
         });
         encomendasButton.addActionListener(new ActionListener() {
@@ -269,7 +269,7 @@ public class Cliente extends JFrame {
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                for(int i = dtm.getRowCount() -1; i >= 0; i--){
+                for (int i = dtm.getRowCount() - 1; i >= 0; i--) {
                     ClienteEntity cliSelecionado = ClienteBLL.readById(Integer.parseInt(String.valueOf(table1.getValueAt(i, 0))));
                     Objects.requireNonNull(cliSelecionado).setNome(String.valueOf(table1.getValueAt(i, 1)));
                     Objects.requireNonNull(cliSelecionado).setNomerua(String.valueOf(table1.getValueAt(i, 2)));
@@ -294,13 +294,12 @@ public class Cliente extends JFrame {
         submeterButtonFornecedor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(NomeFornecedor.getText() == null || numeroPortaFornecedor.getText() == null || RuaFornecedor.getText() == null || contactoFornecedor.getText() == null){
+                if (NomeFornecedor.getText() == null || numeroPortaFornecedor.getText() == null || RuaFornecedor.getText() == null || contactoFornecedor.getText() == null) {
                     NomeFornecedor.setText("Dados incompletos");
                     numeroPortaFornecedor.setText("Dados incompletos");
                     RuaFornecedor.setText("Dados incompletos");
                     contactoFornecedor.setText("Dados incompletos");
-                }
-                else{
+                } else {
                     FornecedorEntity novoFornecedor = new FornecedorEntity();
                     novoFornecedor.setNomeempresafornecedor(NomeFornecedor.getText());
                     novoFornecedor.setNumeroporta(Long.valueOf(numeroPortaFornecedor.getText()));
@@ -321,13 +320,13 @@ public class Cliente extends JFrame {
         updateButtonFornecedor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                for(int i = tabelaFornecedoresModel.getRowCount() - 1; i>=0;i--){
-                    FornecedorEntity forSelecionado = FornecedorBLL.readById(Integer.parseInt(String.valueOf(tabelaFornecedores.getValueAt(i,0))));
-                    Objects.requireNonNull(forSelecionado).setNomeempresafornecedor(String.valueOf(tabelaFornecedores.getValueAt(i,1)));
-                    Objects.requireNonNull(forSelecionado).setNomerua(String.valueOf(tabelaFornecedores.getValueAt(i,2)));
-                    Objects.requireNonNull(forSelecionado).setNumeroporta(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i,3))));
-                    Objects.requireNonNull(forSelecionado).setCodigopostal(String.valueOf(tabelaFornecedores.getValueAt(i,4)));
-                    Objects.requireNonNull(forSelecionado).setContacto(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i,5))));
+                for (int i = tabelaFornecedoresModel.getRowCount() - 1; i >= 0; i--) {
+                    FornecedorEntity forSelecionado = FornecedorBLL.readById(Integer.parseInt(String.valueOf(tabelaFornecedores.getValueAt(i, 0))));
+                    Objects.requireNonNull(forSelecionado).setNomeempresafornecedor(String.valueOf(tabelaFornecedores.getValueAt(i, 1)));
+                    Objects.requireNonNull(forSelecionado).setNomerua(String.valueOf(tabelaFornecedores.getValueAt(i, 2)));
+                    Objects.requireNonNull(forSelecionado).setNumeroporta(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i, 3))));
+                    Objects.requireNonNull(forSelecionado).setCodigopostal(String.valueOf(tabelaFornecedores.getValueAt(i, 4)));
+                    Objects.requireNonNull(forSelecionado).setContacto(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i, 5))));
                     FornecedorBLL.update(forSelecionado);
                 }
             }
@@ -336,7 +335,7 @@ public class Cliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 int row = tabelaFornecedores.getSelectedRow();
-                FornecedorBLL.delete(FornecedorBLL.readById(Integer.parseInt(String.valueOf(tabelaFornecedores.getValueAt(row,0)))));
+                FornecedorBLL.delete(FornecedorBLL.readById(Integer.parseInt(String.valueOf(tabelaFornecedores.getValueAt(row, 0)))));
                 updateListaFornecedores();
             }
         });
@@ -346,10 +345,9 @@ public class Cliente extends JFrame {
         submeterManutencao.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(tipodeAvariaManutencao.getSelectedItem() == null || tanqueManutencao.getSelectedItem() == null || funcionarioManutencao.getSelectedItem() == null || dataManutencao.getText() == null || descricaoManutencao.getText() == null){
+                if (tipodeAvariaManutencao.getSelectedItem() == null || tanqueManutencao.getSelectedItem() == null || funcionarioManutencao.getSelectedItem() == null || dataManutencao.getText() == null || descricaoManutencao.getText() == null) {
 
-                }
-                else{
+                } else {
                     ReportaavariaEntity novaManutencao = new ReportaavariaEntity();
 
                     DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -378,7 +376,7 @@ public class Cliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 int row = tabelaManutencao.getSelectedRow();
-                ReportaAvariaBLL.delete(ReportaAvariaBLL.readById(((Integer) tabelaManutencao.getValueAt(row,0)), ((Integer) tabelaManutencao.getValueAt(row,1)), ((Integer) tabelaManutencao.getValueAt(row,2))));
+                ReportaAvariaBLL.delete(ReportaAvariaBLL.readById(((Integer) tabelaManutencao.getValueAt(row, 0)), ((Integer) tabelaManutencao.getValueAt(row, 1)), ((Integer) tabelaManutencao.getValueAt(row, 2))));
                 updateListaManutencao();
             }
         });
@@ -388,18 +386,17 @@ public class Cliente extends JFrame {
         submeterLotes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-            if(comboboxClienteLotes.getSelectedItem().toString()==null || comboboxEspecieLotes.getSelectedItem().toString() == null || comboboxFuncionarioLotes.getSelectedItem().toString() == null || quantidadeLotes == null){
+                if (comboboxClienteLotes.getSelectedItem().toString() == null || comboboxEspecieLotes.getSelectedItem().toString() == null || comboboxFuncionarioLotes.getSelectedItem().toString() == null || quantidadeLotes == null) {
 
-            }
-            else{
-                LoteEntity novoLote = new LoteEntity();
-                novoLote.setIdcliente(Long.valueOf(comboboxClienteLotes.getSelectedItem().toString()));
-                novoLote.setIdespecie(Long.valueOf(comboboxEspecieLotes.getSelectedItem().toString()));
-                novoLote.setIdfuncionario(Long.valueOf(comboboxFuncionarioLotes.getSelectedItem().toString()));
-                novoLote.setQuantidade(Long.valueOf(quantidadeLotes.getValue().toString()));
-                LoteBLL.create(novoLote);
-                updateListaLotes();
-            }
+                } else {
+                    LoteEntity novoLote = new LoteEntity();
+                    novoLote.setIdcliente(Long.valueOf(comboboxClienteLotes.getSelectedItem().toString()));
+                    novoLote.setIdespecie(Long.valueOf(comboboxEspecieLotes.getSelectedItem().toString()));
+                    novoLote.setIdfuncionario(Long.valueOf(comboboxFuncionarioLotes.getSelectedItem().toString()));
+                    novoLote.setQuantidade(Long.valueOf(quantidadeLotes.getValue().toString()));
+                    LoteBLL.create(novoLote);
+                    updateListaLotes();
+                }
             }
         });
         refreshButtonLotes.addActionListener(new ActionListener() {
@@ -411,12 +408,12 @@ public class Cliente extends JFrame {
         updateButtonLotes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                for(int i = tabelaLotesModel.getRowCount()-1; i>=0;i--){
-                    LoteEntity loteupdate = LoteBLL.readById(Integer.parseInt(String.valueOf(tabelaFornecedores.getValueAt(i,0))));
-                    Objects.requireNonNull(loteupdate).setIdespecie(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i,1))));
-                    Objects.requireNonNull(loteupdate).setIdfuncionario(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i,2))));
-                    Objects.requireNonNull(loteupdate).setIdcliente(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i,3))));
-                    Objects.requireNonNull(loteupdate).setQuantidade(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i,4))));
+                for (int i = tabelaLotesModel.getRowCount() - 1; i >= 0; i--) {
+                    LoteEntity loteupdate = LoteBLL.readById(Integer.parseInt(String.valueOf(tabelaFornecedores.getValueAt(i, 0))));
+                    Objects.requireNonNull(loteupdate).setIdespecie(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i, 1))));
+                    Objects.requireNonNull(loteupdate).setIdfuncionario(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i, 2))));
+                    Objects.requireNonNull(loteupdate).setIdcliente(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i, 3))));
+                    Objects.requireNonNull(loteupdate).setQuantidade(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i, 4))));
                     LoteBLL.update(loteupdate);
                 }
                 updateListaLotes();
@@ -426,55 +423,54 @@ public class Cliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 int row = tabelaLotes.getSelectedRow();
-                LoteBLL.delete(LoteBLL.readById(Integer.parseInt(String.valueOf(tabelaLotes.getValueAt(row,0)))));
+                LoteBLL.delete(LoteBLL.readById(Integer.parseInt(String.valueOf(tabelaLotes.getValueAt(row, 0)))));
                 updateListaLotes();
             }
         });
         //--------------------------------------------------------------------------------------------------
     }
 
-    private void updateListaLotes(){
-        for(int i = tabelaLotesModel.getRowCount() - 1; i>= 0; i--){
+    private void updateListaLotes() {
+        for (int i = tabelaLotesModel.getRowCount() - 1; i >= 0; i--) {
             tabelaLotesModel.removeRow(i);
         }
         List<LoteEntity> listaLotes = LoteBLL.readAll();
 
-        for(LoteEntity lista: listaLotes){
-            String[] data = {String.valueOf(lista.getIdlote()),String.valueOf(lista.getIdespecie()),String.valueOf(lista.getIdfuncionario()),String.valueOf(lista.getIdcliente()),String.valueOf(lista.getQuantidade())};
+        for (LoteEntity lista : listaLotes) {
+            String[] data = {String.valueOf(lista.getIdlote()), String.valueOf(lista.getIdespecie()), String.valueOf(lista.getIdfuncionario()), String.valueOf(lista.getIdcliente()), String.valueOf(lista.getQuantidade())};
             tabelaLotesModel.addRow(data);
         }
 
     }
 
-    private void updateListaManutencao(){
-        for(int i = tabelaManutencaoModel.getRowCount() - 1; i>=0; i--){
+    private void updateListaManutencao() {
+        for (int i = tabelaManutencaoModel.getRowCount() - 1; i >= 0; i--) {
             tabelaManutencaoModel.removeRow(i);
         }
 
         List<ReportaavariaEntity> listaManutencao = ReportaAvariaBLL.readAll();
 
-        for(ReportaavariaEntity lista: listaManutencao){
-            String[] data = {String.valueOf(lista.getIdtipodeavaria()),String.valueOf(lista.getIdtanque()),String.valueOf(lista.getIdfuncionario()),lista.getData().toString(),lista.getDescricao()};
+        for (ReportaavariaEntity lista : listaManutencao) {
+            String[] data = {String.valueOf(lista.getIdtipodeavaria()), String.valueOf(lista.getIdtanque()), String.valueOf(lista.getIdfuncionario()), lista.getData().toString(), lista.getDescricao()};
             tabelaManutencaoModel.addRow(data);
         }
     }
 
-    private void updateListaFornecedores(){
-        for (int i = tabelaFornecedoresModel.getRowCount()-1; i >= 0; i--){
+    private void updateListaFornecedores() {
+        for (int i = tabelaFornecedoresModel.getRowCount() - 1; i >= 0; i--) {
             tabelaFornecedoresModel.removeRow(i);
         }
 
         List<FornecedorEntity> listaFornecedores = FornecedorBLL.readAll();
 
-        for(FornecedorEntity lista: listaFornecedores){
-            String[] data = {String.valueOf(lista.getIdfornecedor()),lista.getNomeempresafornecedor(), lista.getNomerua(),String.valueOf(lista.getNumeroporta()), lista.getCodigopostal(),String.valueOf(lista.getContacto())};
+        for (FornecedorEntity lista : listaFornecedores) {
+            String[] data = {String.valueOf(lista.getIdfornecedor()), lista.getNomeempresafornecedor(), lista.getNomerua(), String.valueOf(lista.getNumeroporta()), lista.getCodigopostal(), String.valueOf(lista.getContacto())};
             tabelaFornecedoresModel.addRow(data);
         }
     }
 
 
-
-    private void updateListaClientes(){
+    private void updateListaClientes() {
         for (int i = dtm.getRowCount() - 1; i >= 0; i--) {
             dtm.removeRow(i);
         }
