@@ -2,8 +2,10 @@ package com.extremelf.Forms;
 
 import com.extremelf.BLL.ClienteBLL;
 import com.extremelf.BLL.CodpostalBLL;
+import com.extremelf.BLL.FornecedorBLL;
 import com.extremelf.DAL.ClienteEntity;
 import com.extremelf.DAL.CodpostalEntity;
+import com.extremelf.DAL.FornecedorEntity;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -45,15 +47,22 @@ public class Cliente extends JFrame {
     private JButton deleteButton;
     private JButton updateButton;
     private JPanel Fornecedor;
-    private JPanel Manutencao;
     private JPanel Encomendas;
     private JPanel Tanques;
     private JPanel Definicoes;
-    private JTable table2;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
+    private JButton refreshButtonFornecedor;
+    private JButton updateButtonFornecedor;
+    private JButton deleteButtonFornecedor;
+    private JButton submeterButtonFornecedor;
+    private JTextField NomeFornecedor;
+    private JTextField RuaFornecedor;
+    private JTextField numeroPortaFornecedor;
+    private JComboBox codigoPostalFornecedor;
+    private JTextField contactoFornecedor;
+    private JPanel AdicionarFornecedor;
+    private JTable tabelaFornecedores;
     DefaultTableModel dtm = (DefaultTableModel) table1.getModel();
+    DefaultTableModel tabelaFornecedoresModel = (DefaultTableModel) tabelaFornecedores.getModel();
 
     CardLayout cardLayout;
 
@@ -67,15 +76,79 @@ public class Cliente extends JFrame {
         dtm.addColumn("Codigo Postal");
         dtm.addColumn("Contacto");
         dtm.addColumn("Cartão Cidadão");
+        tabelaFornecedoresModel.addColumn("Id");
+        tabelaFornecedoresModel.addColumn("Nome");
+        tabelaFornecedoresModel.addColumn("Rua");
+        tabelaFornecedoresModel.addColumn("Numero da Porta");
+        tabelaFornecedoresModel.addColumn("Codigo Postal");
+        tabelaFornecedoresModel.addColumn("Contacto");
 
-
+        //Adicionar CodigosPostais aos respetivos ComboBox -------------------------------------------------
         DefaultComboBoxModel combobox = (DefaultComboBoxModel) ComboBox.getModel();
+        DefaultComboBoxModel comboboxFornecedor = (DefaultComboBoxModel) codigoPostalFornecedor.getModel();
 
         List<CodpostalEntity> listaCodigoPostal = CodpostalBLL.readAll();
         for (CodpostalEntity list : listaCodigoPostal) {
             combobox.addElement(list.getCodigopostal());
+            comboboxFornecedor.addElement(list.getCodigopostal());
         }
 
+        //--------------------------------------------------------------------------------------------------
+
+        //Botões de alterar Painel -----------------------------------------
+        funcionariosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1, "Card1");
+                System.out.println("1");
+            }
+        });
+        clienteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1, "Card2");
+
+            }
+        });
+        Lotes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1, "Card3");
+            }
+        });
+        fornecedorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1,"Card4");
+            }
+        });
+        manutencaoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1,"Card5");
+            }
+        });
+        encomendasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1, "Card6");
+            }
+        });
+        tanquesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1, "Card7");
+            }
+        });
+        definicoesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1, "Card8");
+            }
+        });
+        //-------------------------------------------------------------------
+
+        //Botões Clientes ----------------------------------------------------------------------------------
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,12 +156,6 @@ public class Cliente extends JFrame {
                 setVisible(false);
                 back.setVisible(true);
                 dispose();
-            }
-        });
-        refreshButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                update();
             }
         });
         submeterButton.addActionListener(new ActionListener() {
@@ -105,7 +172,7 @@ public class Cliente extends JFrame {
                     novoCli.setNome(textField1.getText());
                     novoCli.setNomerua(textField2.getText());
                     novoCli.setNumeroporta(Long.valueOf(textField3.getText()));
-                    novoCli.setCodigopostal(String.valueOf(ComboBox.getSelectedItem().toString()));
+                    novoCli.setCodigopostal(String.valueOf(ComboBox.getSelectedItem()));
                     novoCli.setContacto(Long.valueOf(textField5.getText()));
                     novoCli.setCc(Long.valueOf(textField6.getText()));
 
@@ -113,33 +180,10 @@ public class Cliente extends JFrame {
                 }
             }
         });
-        funcionariosButton.addActionListener(new ActionListener() {
+        refreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                cardLayout.show(Cards1, "Card1");
-                System.out.println("1");
-            }
-        });
-        clienteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                cardLayout.show(Cards1, "Card2");
-
-            }
-        });
-
-        Lotes.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                cardLayout.show(Cards1, "Card3");
-            }
-        });
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                int row = table1.getSelectedRow();
-                ClienteBLL.delete(ClienteBLL.readById(Integer.parseInt(String.valueOf(table1.getValueAt(row, 0)))));
-                update();
+                updateListaClientes();
             }
         });
         updateButton.addActionListener(new ActionListener() {
@@ -156,10 +200,82 @@ public class Cliente extends JFrame {
                 }
             }
         });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                int row = table1.getSelectedRow();
+                ClienteBLL.delete(ClienteBLL.readById(Integer.parseInt(String.valueOf(table1.getValueAt(row, 0)))));
+                updateListaClientes();
+            }
+        });
+        //--------------------------------------------------------------------------------------------------
 
+        //Botões Fornecedor -------------------------------------------------------------------------------
+        submeterButtonFornecedor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(NomeFornecedor.getText() == null || numeroPortaFornecedor.getText() == null || RuaFornecedor.getText() == null || contactoFornecedor.getText() == null){
+                    NomeFornecedor.setText("Dados incompletos");
+                    numeroPortaFornecedor.setText("Dados incompletos");
+                    RuaFornecedor.setText("Dados incompletos");
+                    contactoFornecedor.setText("Dados incompletos");
+                }
+                else{
+                    FornecedorEntity novoFornecedor = new FornecedorEntity();
+                    novoFornecedor.setNomeempresafornecedor(NomeFornecedor.getText());
+                    novoFornecedor.setNumeroporta(Long.valueOf(numeroPortaFornecedor.getText()));
+                    novoFornecedor.setNomerua(RuaFornecedor.getText());
+                    novoFornecedor.setCodigopostal(String.valueOf(codigoPostalFornecedor.getSelectedItem()));
+                    novoFornecedor.setContacto(Long.valueOf(contactoFornecedor.getText()));
+                    FornecedorBLL.create(novoFornecedor);
+                }
+                updateListaFornecedores();
+            }
+        });
+        refreshButtonFornecedor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                updateListaFornecedores();
+            }
+        });
+        updateButtonFornecedor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                for(int i = tabelaFornecedoresModel.getRowCount() - 1; i>=0;i--){
+                    FornecedorEntity forSelecionado = FornecedorBLL.readById(Integer.parseInt(String.valueOf(tabelaFornecedores.getValueAt(i,0))));
+                    Objects.requireNonNull(forSelecionado).setNomeempresafornecedor(String.valueOf(tabelaFornecedores.getValueAt(i,1)));
+                    Objects.requireNonNull(forSelecionado).setNomerua(String.valueOf(tabelaFornecedores.getValueAt(i,2)));
+                    Objects.requireNonNull(forSelecionado).setNumeroporta(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i,1))));
+                    Objects.requireNonNull(forSelecionado).setCodigopostal(String.valueOf(tabelaFornecedores.getValueAt(i,1)));
+                    Objects.requireNonNull(forSelecionado).setContacto(Long.valueOf(String.valueOf(tabelaFornecedores.getValueAt(i,1))));
+                }
+            }
+        });
+        deleteButtonFornecedor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                int row = tabelaFornecedores.getSelectedRow();
+                FornecedorBLL.delete(FornecedorBLL.readById(Integer.parseInt(String.valueOf(tabelaFornecedores.getValueAt(row,0)))));
+                updateListaFornecedores();
+            }
+        });
+        //--------------------------------------------------------------------------------------------------
     }
 
-    private void update(){
+    private void updateListaFornecedores(){
+        for (int i = tabelaFornecedoresModel.getRowCount()-1; i >= 0; i--){
+            tabelaFornecedoresModel.removeRow(i);
+        }
+
+        List<FornecedorEntity> listaFornecedores = FornecedorBLL.readAll();
+
+        for(FornecedorEntity lista: listaFornecedores){
+            String[] data = {String.valueOf(lista.getIdfornecedor()),lista.getNomeempresafornecedor(), lista.getNomerua(),String.valueOf(lista.getNumeroporta()), lista.getCodigopostal(),String.valueOf(lista.getContacto())};
+            tabelaFornecedoresModel.addRow(data);
+        }
+    }
+
+    private void updateListaClientes(){
         for (int i = dtm.getRowCount() - 1; i >= 0; i--) {
             dtm.removeRow(i);
         }
