@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "AGUA", schema = "PROJETO", catalog = "")
+@Table(name = "AGUA", schema = "DATABASEPROJ", catalog = "")
 @NamedQueries({
         @NamedQuery(name = "Agua.findAll", query = "SELECT a FROM AguaEntity a"),
         @NamedQuery(name = "Agua.findByIdAgua", query = "SELECT a FROM AguaEntity a WHERE a.idagua = :idAgua")

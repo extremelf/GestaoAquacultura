@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "CONTROLODEQUALIDADE", schema = "PROJETO", catalog = "")
+@Table(name = "CONTROLODEQUALIDADE", schema = "DATABASEPROJ", catalog = "")
 @NamedQueries({
         @NamedQuery(name = "ControloDeQualidade.findAll", query = "SELECT a FROM ControlodequalidadeEntity a"),
         @NamedQuery(name = "ControloDeQualidade.findByIds", query = "SELECT a FROM ControlodequalidadeEntity a WHERE a.idtipodecontrolo = :idTipoControlo  AND a.idfuncionario = :idFuncionario AND a.idtanque = :idTanque"),
