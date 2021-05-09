@@ -27,6 +27,8 @@
         <class>com.extremelf.DAL.ClienteEntity</class>
         <properties>
             <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
+            <property name="hibernate.dataSource.implicitCachingEnabled" value="true"/>
+            <property name="hibernate.dataSource.maxStatements" value="250"/>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
             <property name="hibernate.connection.url" value="jdbc:oracle:thin:@192.168.1.83:1521:XE"/>
             <property name="hibernate.connection.username" value="projeto"/>
