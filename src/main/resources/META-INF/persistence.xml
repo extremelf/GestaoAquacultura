@@ -29,12 +29,16 @@
             <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
             <property name="hibernate.dataSource.implicitCachingEnabled" value="true"/>
             <property name="hibernate.dataSource.maxStatements" value="250"/>
-            <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
-            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@192.168.1.83:1521:XE"/>
-            <property name="hibernate.connection.username" value="projeto"/>
-            <property name="hibernate.connection.password" value="123456"/>
-            <property name="hibernate.archive.autodetection" value="class"/>
-            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hikari.dataSourceClassName" value="oracle.jdbc.pool.OracleDataSource"/>
+            <!--<property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>-->
+            <property name="hibernate.hikari.dataSource.url" value="jdbc:oracle:thin:@192.168.1.83:1521:XE"/>
+            <property name="hibernate.hikari.dataSource.user" value="projeto"/>
+            <property name="hibernate.hikari.dataSource.password" value="123456"/>
+            <property name="hibernate.hikari.maximumPoolSize" value="6"/>
+            <property name="hibernate.hikari.minimumIdle" value="5"/>
+            <property name="hibernate.hikari.idleTimeout" value="30000"/>
+            <property name="hibernate.ejb.use_class_enhancer" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.jdbc.batch_size" value="50"/>
