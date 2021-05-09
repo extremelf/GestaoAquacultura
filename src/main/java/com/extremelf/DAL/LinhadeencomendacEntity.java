@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "LINHADEENCOMENDAC", schema = "PROJETO", catalog = "")
+@Table(name = "LINHADEENCOMENDAC", schema = "DATABASEPROJ", catalog = "")
 @IdClass(LinhadeencomendacEntityPK.class)
 @NamedQueries({
         @NamedQuery(name= "Linhaencomendac.findAll", query = "SELECT a from LinhadeencomendacEntity a "),
