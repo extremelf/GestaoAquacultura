@@ -4,27 +4,28 @@ import com.extremelf.BLL.ClienteBLL;
 import com.extremelf.BLL.CodpostalBLL;
 import com.extremelf.DAL.ClienteEntity;
 import com.extremelf.DAL.CodpostalEntity;
-import net.bytebuddy.asm.Advice;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Objects;
 
 public class Cliente extends JFrame {
     private JPanel panelCli;
     private JPanel ClienteP;
-    private JPanel panelbutt;
-    private JButton button1;
-    private JButton Lotes;
-    private JButton encomendasButton;
-    private JButton funcionariosButton;
-    private JButton fornecedorButton;
-    private JButton clienteButton;
-    private JButton manutençãoButton;
+    private JButton definicoesButton;
     private JButton tanquesButton;
-    private JButton definiçõesButton;
+    private JButton manutencaoButton;
+    private JButton clienteButton;
+    private JButton fornecedorButton;
+    private JButton funcionariosButton;
+    private JButton encomendasButton;
+    private JButton button1;
+    private JPanel panelbutt;
+    private JButton Lotes;
     private JButton backButton;
     private JPanel NovoCliente;
     private JPanel ListarClientes;
@@ -38,19 +39,31 @@ public class Cliente extends JFrame {
     private JButton submeterButton;
     private JTable table1;
     private JButton refreshButton;
+    private JPanel Cards1;
+    private JPanel Funcionario;
+    private JPanel Lotees;
+    private JButton deleteButton;
+    private JButton updateButton;
+    DefaultTableModel dtm = (DefaultTableModel) table1.getModel();
+
+    CardLayout cardLayout;
 
     public Cliente() {
-        DefaultTableModel dtm = (DefaultTableModel) table1.getModel();
+        cardLayout = (CardLayout) Cards1.getLayout();
+        System.out.println("2");
+        dtm.addColumn("Id");
         dtm.addColumn("Nome");
         dtm.addColumn("Rua");
         dtm.addColumn("Numero da Porta");
         dtm.addColumn("Codigo Postal");
         dtm.addColumn("Contacto");
         dtm.addColumn("Cartão Cidadão");
+
+
         DefaultComboBoxModel combobox = (DefaultComboBoxModel) ComboBox.getModel();
 
         List<CodpostalEntity> listaCodigoPostal = CodpostalBLL.readAll();
-        for(CodpostalEntity list: listaCodigoPostal){
+        for (CodpostalEntity list : listaCodigoPostal) {
             combobox.addElement(list.getCodigopostal());
         }
 
@@ -61,20 +74,18 @@ public class Cliente extends JFrame {
                 setVisible(false);
                 back.setVisible(true);
                 dispose();
-
-
             }
         });
         refreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                for(int i = dtm.getRowCount()-1 ; i >= 0; i--){
+                for (int i = dtm.getRowCount() - 1; i >= 0; i--) {
                     dtm.removeRow(i);
                 }
                 List<ClienteEntity> listacliente = ClienteBLL.readAll();
 
                 for (ClienteEntity lista : listacliente) {
-                    String[] data = {lista.getNome(), lista.getNomerua(), String.valueOf(lista.getNumeroporta()), lista.getCodigopostal(), String.valueOf(lista.getContacto()), String.valueOf(lista.getCc())};
+                    String[] data = {String.valueOf(lista.getIdcliente()),lista.getNome(), lista.getNomerua(), String.valueOf(lista.getNumeroporta()), lista.getCodigopostal(), String.valueOf(lista.getContacto()), String.valueOf(lista.getCc())};
                     dtm.addRow(data);
                 }
             }
@@ -82,14 +93,13 @@ public class Cliente extends JFrame {
         submeterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (textField1.getText() == null || textField2.getText() == null || textField3.getText() == null || textField5.getText() == null || textField6.getText() == null){
+                if (textField1.getText() == null || textField2.getText() == null || textField3.getText() == null || textField5.getText() == null || textField6.getText() == null) {
                     textField1.setText("Dados incompletos");
                     textField2.setText("Dados incompletos");
                     textField3.setText("Dados incompletos");
                     textField5.setText("Dados incompletos");
                     textField6.setText("Dados incompletos");
-                }
-                else{
+                } else {
                     ClienteEntity novoCli = new ClienteEntity();
                     novoCli.setNome(textField1.getText());
                     novoCli.setNomerua(textField2.getText());
@@ -100,6 +110,64 @@ public class Cliente extends JFrame {
 
                     ClienteBLL.create(novoCli);
                 }
+            }
+        });
+        funcionariosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1,"Card1");
+                System.out.println("1");
+            }
+        });
+        clienteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1, "Card2");
+
+            }
+        });
+
+        Lotes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cardLayout.show(Cards1, "Card3");
+            }
+        });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                int row = table1.getSelectedRow();
+                ClienteBLL.delete(ClienteBLL.readById(Integer.parseInt(String.valueOf(table1.getValueAt(row,0)))));
+            }
+        });
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                int row = table1.getSelectedRow();
+                int column = table1.getSelectedColumn();
+                ClienteEntity cliSelecionado = ClienteBLL.readById(Integer.parseInt(String.valueOf(table1.getValueAt(row,0))));
+                switch(column){
+                    case 1:{
+                        Objects.requireNonNull(cliSelecionado).setNome(String.valueOf(table1.getValueAt(row,column)));
+                    }
+                    case 2:{
+                        Objects.requireNonNull(cliSelecionado).setNomerua(String.valueOf(table1.getValueAt(row,column)));
+                    }
+                    case 3:{
+                        Objects.requireNonNull(cliSelecionado).setNumeroporta(Long.valueOf(String.valueOf(table1.getValueAt(row,column))));
+                    }
+                    case 5:{
+                        Objects.requireNonNull(cliSelecionado).setContacto(Long.valueOf(String.valueOf(table1.getValueAt(row,column))));
+                    }
+                    case 6:{
+                        Objects.requireNonNull(cliSelecionado).setContacto(Long.valueOf(String.valueOf(table1.getValueAt(row,column))));
+                    }
+                    case 7:{
+                        Objects.requireNonNull(cliSelecionado).setCc(Long.valueOf(String.valueOf(table1.getValueAt(row,column))));
+                    }
+                }
+
+                ClienteBLL.update(cliSelecionado);
             }
         });
     }
